@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Emma & Luka — Wedding Invitation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400&family=Poppins:wght@300;500&display=swap" rel="stylesheet">
+<style>
+:root{--serif:"Lora",Georgia,serif;--sans:"Poppins",Arial,sans-serif}
+:root{--sage:#7d8f76;--sage-d:#56664f;--cream:#f7f2ea;--paper:#fffdf8;--gold:#b8955a;--ink:#3b3a36}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{background:radial-gradient(ellipse at top,#eef0e8 0%,#dfe3d6 60%,#cfd5c4 100%);font-family:var(--sans),Lora,sans-serif;color:var(--ink);overflow-x:hidden}
+.stage{min-height:100vh;display:flex;align-items:center;justify-content:center;flex-direction:column;padding:24px}
+.hint{font-family:var(--sans);font-weight:500;letter-spacing:.3em;font-size:12px;text-transform:uppercase;color:var(--sage-d);margin-top:34px;animation:pulse 2s infinite}
+@keyframes pulse{50%{opacity:.35}}
+/* envelope */
+.env{position:relative;width:min(420px,86vw);aspect-ratio:1.45;cursor:pointer;perspective:1400px}
+.env .back{position:absolute;inset:0;background:var(--sage);border-radius:6px;box-shadow:0 30px 60px rgba(60,70,50,.35)}
+.env .front{position:absolute;inset:0;z-index:4;border-radius:6px;overflow:hidden;pointer-events:none}
+.env .front{background:#8a9b83;clip-path:polygon(0 0,50% 56%,100% 0,100% 100%,0 100%)}
+.env .flap{position:absolute;top:0;left:0;right:0;height:62%;z-index:5;transform-origin:top;transition:transform .9s cubic-bezier(.6,.05,.3,1),z-index 0s .45s}
+.env .flap:before{content:"";position:absolute;inset:0;background:#6f8168;clip-path:polygon(0 0,100% 0,50% 100%);filter:drop-shadow(0 4px 4px rgba(0,0,0,.15))}
+.seal{position:absolute;left:50%;top:62%;width:64px;height:64px;margin:-32px;border-radius:50%;z-index:6;background:radial-gradient(circle at 35% 30%,#d8b97e,#a8813f 70%);box-shadow:0 4px 10px rgba(0,0,0,.3),inset 0 0 0 4px rgba(255,255,255,.18);display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-style:italic;font-size:22px;color:#fff8e6;transition:opacity .4s, transform .4s}
+.letter{position:absolute;left:6%;right:6%;top:8%;bottom:6%;background:var(--paper);border-radius:4px;z-index:2;transition:transform 1s cubic-bezier(.5,.1,.3,1) .7s;display:flex;align-items:center;justify-content:center;flex-direction:column;font-family:var(--serif);font-style:italic;color:var(--sage-d)}
+.letter small{font-family:var(--sans);font-weight:300;letter-spacing:.3em;font-size:10px;text-transform:uppercase;color:var(--gold);margin-bottom:6px}
+.letter b{font-weight:400;font-size:26px}
+.open .flap{transform:rotateX(180deg);z-index:1}
+.open .seal{opacity:0;transform:scale(.6)}
+.open .letter{transform:translateY(-72%)}
+/* card */
+.card{display:none;width:min(560px,94vw);background:var(--paper);border-radius:10px;box-shadow:0 30px 70px rgba(60,70,50,.3);padding:56px 40px 44px;text-align:center;position:relative;opacity:0;transform:translateY(40px);transition:all 1s ease}
+.card.show{opacity:1;transform:none}
+.card:before{content:"";position:absolute;inset:14px;border:1px solid rgba(184,149,90,.55);border-radius:6px;pointer-events:none}
+.leaf{width:110px;margin:0 auto 18px;display:block}
+.kicker{font-family:var(--sans);font-weight:500;letter-spacing:.38em;text-transform:uppercase;font-size:11px;color:var(--gold)}
+.names{font-family:var(--serif);font-style:italic;font-size:58px;line-height:1.05;color:var(--sage-d);margin:18px 0 6px}
+.names span{display:block;font-size:30px;color:var(--gold);margin:4px 0}
+.lead{font-family:var(--serif);font-size:16px;color:#6a675f;margin:14px auto 26px;max-width:380px;line-height:1.6}
+.date{display:flex;align-items:center;justify-content:center;gap:18px;margin:8px 0 6px;font-family:var(--serif)}
+.date .side{border-top:1px solid var(--gold);border-bottom:1px solid var(--gold);padding:6px 10px;font-family:var(--sans);font-weight:500;letter-spacing:.25em;font-size:12px;text-transform:uppercase;min-width:110px}
+.date .day{font-size:52px;color:var(--sage-d);line-height:1}
+.year{font-family:var(--sans);font-weight:500;letter-spacing:.4em;font-size:12px;color:var(--gold)}
+.count{display:flex;justify-content:center;gap:14px;margin:30px 0}
+.count div{background:var(--cream);border-radius:8px;width:76px;padding:12px 0}
+.count b{display:block;font-family:var(--serif);font-size:28px;color:var(--sage-d);font-weight:500}
+.count i{font-style:normal;font-family:var(--sans);font-weight:300;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#8b877c}
+.sched{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:6px 0 28px;text-align:center}
+.sched div{border:1px solid #eae3d5;border-radius:8px;padding:16px 10px}
+.sched h4{font-family:var(--sans);font-weight:500;font-weight:400;letter-spacing:.25em;font-size:11px;text-transform:uppercase;color:var(--gold);margin-bottom:6px}
+.sched p{font-family:var(--serif);font-size:15px;line-height:1.5}
+.btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.btn{font-family:var(--sans);font-weight:500;letter-spacing:.2em;text-transform:uppercase;font-size:11px;padding:14px 24px;border-radius:40px;border:1px solid var(--sage-d);color:var(--sage-d);background:none;text-decoration:none}
+.btn.fill{background:var(--sage-d);color:#fff}
+.foot{margin-top:28px;font-family:var(--serif);font-style:italic;color:#8b877c;font-size:14px}
+</style>
+</head>
+<body>
+<div class="stage" id="stage">
+  <div class="env" id="env">
+    <div class="back"></div>
+    <div class="letter"><small>You are invited</small><b>Emma &amp; Luka</b></div>
+    <div class="front"></div>
+    <div class="flap"></div>
+    <div class="seal">E&amp;L</div>
+  </div>
+  <div class="hint" id="hint">Tap to open</div>
+
+  <div class="card" id="card">
+    <svg class="leaf" viewBox="0 0 120 40" fill="none" stroke="#b8955a" stroke-width="1.2"><path d="M4 20h112"/><path d="M60 20c-8-12-22-14-30-10 8 2 18 8 30 10zM60 20c8-12 22-14 30-10-8 2-18 8-30 10zM60 20c-8 12-22 14-30 10 8-2 18-8 30-10zM60 20c8 12 22 14 30 10-8-2-18-8-30-10z" fill="#e9e1cf"/><circle cx="60" cy="20" r="3" fill="#b8955a"/></svg>
+    <div class="kicker">Together with their families</div>
+    <div class="names">Emma<span>&amp;</span>Luka</div>
+    <p class="lead">request the pleasure of your company as they celebrate their marriage</p>
+    <div class="date"><div class="side">Saturday</div><div class="day">20</div><div class="side">June</div></div>
+    <div class="year">2027</div>
+    <div class="count" id="count"><div><b id="d">0</b><i>Days</i></div><div><b id="h">0</b><i>Hours</i></div><div><b id="m">0</b><i>Min</i></div><div><b id="s">0</b><i>Sec</i></div></div>
+    <div class="sched">
+      <div><h4>Ceremony</h4><p>4:00 PM<br>St. Mary's Chapel</p></div>
+      <div><h4>Reception</h4><p>6:30 PM<br>Villa Olive Garden</p></div>
+    </div>
+    <div class="btns"><a class="btn fill" href="#">RSVP</a><a class="btn" href="#">View map</a></div>
+    <p class="foot">Kindly reply by May 20, 2027</p>
+  </div>
+</div>
+<script>
+const env=document.getElementById('env'),card=document.getElementById('card'),hint=document.getElementById('hint');
+function openEnv(){if(env.classList.contains('open'))return;env.classList.add('open');hint.style.opacity=0;
+ setTimeout(()=>{env.style.display='none';hint.style.display='none';card.style.display='block';requestAnimationFrame(()=>card.classList.add('show'))},2700)}
+env.addEventListener('click',openEnv);
+const target=new Date('2027-06-20T16:00:00');
+function tick(){let t=Math.max(0,target-new Date());const d=Math.floor(t/864e5);t%=864e5;const h=Math.floor(t/36e5);t%=36e5;const m=Math.floor(t/6e4);const s=Math.floor(t%6e4/1e3);
+ [['d',d],['h',h],['m',m],['s',s]].forEach(([k,v])=>document.getElementById(k).textContent=String(v).padStart(2,'0'))}
+tick();setInterval(tick,1000);
+if(location.hash==='#open'){env.style.display='none';hint.style.display='none';card.style.display='block';card.classList.add('show');card.style.transition='none'}
+</script>
+</body>
+</html>
